@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  <title>Booking</title>
+  <style>
+    body {
+      
+      font-family: Arial, sans-serif;
+     
+      background:url(pic.jpg)
+    }
+    
+    h1 {
+      color: rgb(42, 252, 0);
+      text-align: center;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      width: 200px;
+      padding: 5px;
+      background-color: rgb(247, 237, 101);
+    }
+
+    input[type="submit"] {
+      background-color: rgb(248, 240, 126);
+      color: #020202d7;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .booking-details {
+      margin-top: 20px;
+      color: cornsilk;
+    }
+    .contact-details {
+      margin-top: 20px;
+      color: aquamarine;
+      text-align: right;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Magboo Online Booking</h1>
+<div class="menu">
+  <ul>
+    <li>Prices</li>
+    <li>Route</li>
+    <li>Schedule</li>
+  </ul>
+</div>
+  <form action="booking.php" method="POST">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required>
+
+    <label for="pickup-date">Pickup Date:</label>
+    <input type="date" id="pickup-date" name="pickup-date" required>
+
+    <label for="return-date">Return Date:</label>
+    <input type="date" id="return-date" name="return-date" required>
+
+    <input type="submit" value="Book Van">
+  </form>
+
+  <div class="booking-details">
+    <h2>Booking Details:</h2>
+    <p>Name: <span id="booking-name"></span></p>
+    <p>Address: <span id="booking-address"></span></p>
+    <p>Pickup Date: <span id="booking-pickup-date"></span></p>
+    <p>Return Date: <span id="booking-return-date"></span></p>
+  </div>
+
+  <div class="contact-details">
+    <h2>Contact Details:</h2>
+    <p>Mark Aron Magboo</p>
+    <p>Call-09924657192</p>
+  </div>
+
+  <script>
+    const form = document.querySelector('form');
+    const bookingName = document.getElementById('booking-name');
+    const bookingAddress = document.getElementById('booking-address');
+    const bookingPickupDate = document.getElementById('booking-pickup-date');
+    const bookingReturnDate = document.getElementById('booking-return-date');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const pickupDate = document.getElementById('pickup-date').value;
+      const returnDate = document.getElementById('return-date').value;
+
+      bookingName.textContent = name;
+      bookingAddress.textContent = address;
+      bookingPickupDate.textContent = pickupDate;
+      bookingReturnDate.textContent = returnDate;
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
